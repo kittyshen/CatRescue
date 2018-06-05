@@ -1,0 +1,24 @@
+<h1>Meow Wish List</h1>
+<div class ="text-center col-md-12">
+<h4>Save the wish that meows want the most on meow planet</h4>
+</div>
+
+<hr>
+<ul>
+  {{#each List}}
+	<div class ="alert alert-info">
+  	<li>
+  	   <p> Wish {{id}} : {{someKey}}</p>
+  	</li>
+	</div>
+
+  {{/each}}
+</ul>
+<div class ="text-center col-md-12">
+	<form action="/" method="POST">
+		<textarea type="text" name="addWish"></textarea>
+
+		<button type="submit">Submit</button>
+	</form>
+</div>
+

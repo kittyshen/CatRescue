@@ -1,6 +1,6 @@
 # CatRescue
 # Node Express Handlebars
-### UC Berkeley coding assignment 4
+### UC Berkeley coding assignment 12
 
 ### Overview
 
@@ -178,3 +178,23 @@ All the recommended files and directories from the steps above should look like 
     └── layouts
         └── main.handlebars
 ```
+
+
+```javascript
+//server.js on the file structure root run this to import logic js files
+require('./app/routing/apiRoutes.js')(app); 
+require('./app/routing/htmlRoutes.js')(app);
+```  
+
+## Link to the site
+[Click me]()
+
+## Author 
+[Kitty Shen ](https://github.com/kittyshen)
+
+https://github.com/kittyshen
+
+### [Link to Portfolio Site](https://kittyshen.github.io/Portfolio/)
+
+## License
+Standard MIT License
