@@ -1,24 +1,91 @@
-<h1>Meow Wish List</h1>
+<h1>Save Da Cat</h1>
 <div class ="text-center col-md-12">
-<h4>Save the wish that meows want the most on meow planet</h4>
+<h4>Adopt a cat or put up new cat for adoption</h4>
 </div>
 
-<hr>
-<ul>
-  {{#each List}}
-	<div class ="alert alert-info">
-  	<li>
-  	   <p> Wish {{id}} : {{someKey}}</p>
-  	</li>
+<div class = "row">
+
+	<div class = "col-md-4 col-sm-4">
+		<ul>
+			{{#each cats}}
+				{{#unless rescued}}
+					<div class ="alert alert-info ">
+						<li>
+							<p> {{id}} : {{cat_name}}</p>
+							<img src="assets/img/meow.png" width =80px alt="catbaby">
+							<form id ="adpotCat"  method="POST">
+							<button type="submit" class = "btn btn-primary adpBtn" data-id={{id}}>Adpot Meow</button>
+							</form>
+						</li>
+					</div>
+				{{/unless}}
+			{{/each}}
+		</ul>
 	</div>
 
-  {{/each}}
-</ul>
-<div class ="text-center col-md-12">
-	<form action="/" method="POST">
-		<textarea type="text" name="addWish"></textarea>
 
-		<button type="submit">Submit</button>
-	</form>
+	<div class ="text-center col-md-4 col-sm-4">
+		<form id ="addCat"  method="POST">
+			<input type="text" name="catname">
+
+			<button class ="btn btn-primary " type="submit">Submit</button>
+		</form>
+	</div>
+
+	<div class="col-md-4 col-sm-4">
+		<ul>
+			{{#each cats}}
+				{{#if rescued}}
+					<div class="alert alert-info ">
+						<li>
+							<p> {{id}} : {{cat_name}}</p>
+							<img src="assets/img/meow2.png" width =80px alt="catbaby">
+							<span>Found a happy home</span>
+						</li>
+					</div>
+				{{/if}}
+			{{/each}}
+		</ul>
+	</div>
+
 </div>
+<script type = "text/javascript">
+$(function() {
+	//click on the addCat button event
+	$("#addCat").on("submit",function(event){
+		event.preventDefault();
+		var catName = $("[name=catname]").val().trim();
+		var newCatObj = {
+			name:catName,
+			rescued:0
+		}
+		console.log(newCatObj);
+		$.post("/addcat",newCatObj)
+		.then(function(){
+			location.reload();
+		});
+	});
+
+	//click on the adoptcat button
+	$(".adpBtn").on("click",function(event){
+		event.preventDefault();	
+		var catid = $(this).data("id");
+		var newCatObj = {
+			rescued:1,
+		}
+		console.log(newCatObj);
+
+		$.ajax("/adpotcat/"+catid, {
+			type: "PUT",
+			data: newCatObj
+		})
+		.then(function(){
+			console.log("changed adopted to", true);
+			location.reload();
+		});
+
+	});
+
+})
+</script>
 
