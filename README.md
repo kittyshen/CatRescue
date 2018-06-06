@@ -58,7 +58,7 @@ Be sure to utilize the [MYSQL Heroku Deployment Guide](../../resources/pdf/MySQL
    * Create a `cats` table with these fields:
      * **id**: an auto incrementing int that serves as the primary key.
      * **cat_name**: a string.
-     * **devoured**: a boolean.
+     * **rescued**: a boolean.
 
 3. Still in the `db` folder, create a `seeds.sql` file. In this file, write insert queries to populate the `cats` table with at least three entries.
 
