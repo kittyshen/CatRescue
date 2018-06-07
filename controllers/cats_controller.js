@@ -23,6 +23,13 @@ router.get("/",function(req,res){
         res.render("../views/index.handlebars",{cats:data})
     });
 })
+router.get("/all",function(req,res){
+    cat.all(function(data){
+        // console.log(data);
+        res.json(data);
+        // res.render("../views/index.handlebars",{cats:data})
+    });
+})
 
 router.post("/addcat",function(req,res){
     cat.add("cat_name,rescued",[req.body.name,req.body.rescued],function(data){
