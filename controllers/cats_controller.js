@@ -14,10 +14,10 @@ var cat = require("../models/cat.js");
 //     })
 // })
 
-var orm = require("../config/orm.js")
+// var orm = require("../config/orm.js")
 // Create all routes and set up logic within those routes where required.
 router.get("/",function(req,res){
-    orm.selectAll("cats",function(data){
+    cat.all(function(data){
         // console.log(data);
         // res.json(data);
         res.render("../views/index.handlebars",{cats:data})
@@ -25,20 +25,18 @@ router.get("/",function(req,res){
 })
 
 router.post("/addcat",function(req,res){
-    orm.insertOne("cats","cat_name,rescued",[req.body.name,req.body.rescued],function(data){
+    cat.add("cat_name,rescued",[req.body.name,req.body.rescued],function(data){
         // console.log(data);
         res.json(data);
-
     });
 })
 
 router.put("/adpotcat/:id",function(req,res){
      console.log("inside adopt");
 
-    orm.update("cats",{rescued:req.body.rescued},{id:req.params.id},function(data){
+    cat.update({rescued:req.body.rescued},{id:req.params.id},function(data){
         // console.log(data);
         res.json(data);
-
     });
 })
 module.exports = router;

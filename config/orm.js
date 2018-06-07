@@ -20,7 +20,7 @@ var orm ={
             callback(data); //pass back the data from database to the callback function to be used in cat.js then to cat controller then rendered on webpage
         });
     },
-    update: function (tableName, objColVals, condition, cb) {
+    updateOne: function (tableName, objColVals, condition, cb) {
         var queryString = "UPDATE " + tableName;
         queryString += " SET ? ";
         queryString += " WHERE ? ";
@@ -31,7 +31,6 @@ var orm ={
             if (err) {
                 throw err;
             }
-
             cb(result);
         });
     }
