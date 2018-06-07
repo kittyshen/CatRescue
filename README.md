@@ -139,6 +139,7 @@ Be sure to utilize the [MYSQL Heroku Deployment Guide](../../resources/pdf/MySQL
 
      * Create a button in `index.handlebars` that will submit the user input into the database.
 
+
 #### Directory structure
 
 All the recommended files and directories from the steps above should look like the following structure:
@@ -179,6 +180,12 @@ All the recommended files and directories from the steps above should look like 
         └── main.handlebars
 ```
 
+### Key learning points
+
+* rename your heroko app deployment using this inside the project folder
+```
+heroku apps:rename kittycat-rescue
+```
 
 ```javascript
 //server.js on the file structure root run this to import logic js files
